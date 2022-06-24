@@ -8,6 +8,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link rel="icon" href="../static/Normal-10191.png" type="image/icon type" />
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
     <link
@@ -28,20 +29,37 @@
     <div class="container py-5">
       <!-- For demo purpose -->
       <header class="text-white text-center">
-        <h1 class="display-4">Covid-19 Detection</h1>
+        <h1 class="display-4" style="font-weight: 700;">COVID-19 DETECTION</h1>
         <p class="lead mb-0">COVID - VIRAL - NORMAL</p>
       </header>
 
       <div class="row py-4">
-        <form action="{{ url_for('predict')}}" method="post">
+        <form
+          action="{{ url_for('predict')}}"
+          method="post"
+          enctype="multipart/form-data"
+        >
           <div class="col-lg-6 mx-auto">
             <!-- Upload image input-->
+            <div class="image-area mt-4">
+              <img
+                id="imageResult"
+                src="../static/img_icon.png"
+                alt=""
+                height="300px"
+                width="300px"
+                class="img-fluid rounded shadow-sm mx-auto d-block"
+              />
+            </div>
+
             <div
-              class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm"
+              class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm mt-4"
             >
               <input
                 id="upload"
                 type="file"
+                name="file"
+                accept="image/png, image/gif, image/jpeg"
                 onchange="readURL(this);"
                 class="form-control border-0"
               />
@@ -62,23 +80,38 @@
             </div>
 
             <!-- Uploaded image area-->
-            <p class="font-italic text-white text-center">
-              {{ prediction_text }} The image uploaded will be rendered inside
-              the box below.
+            <p
+              class=" text-white text-uppercase text-center p-4"
+            >
+              {{ prediction_text }}
             </p>
-            <div class="image-area mt-4">
-              <img
-                id="imageResult"
-                src="#"
-                alt=""
-                class="img-fluid rounded shadow-sm mx-auto d-block"
-              />
-            </div>
 
             <div class="d-grid gap-2 md-block mt-4">
-              <button type="submit" class="btn btn-success">Submit</button>
-              <button type="reset" class="btn btn-warning">Reset</button>
-              <button class="btn btn-primary">About Us</button>
+              <button id="btnSubmit" type="submit" class="btn btn-d disabled">Predict</button>
+              <div class="toast-container position-fixed top-0 end-0 p-3">
+                <div
+                  id="basicToast"
+                  class="toast"
+                  role="alert"
+                  aria-live="assertive"
+                  aria-atomic="true"
+                  show="true"
+                >
+                  <div class="toast-header bg-danger text-light">
+                    <h5 class="my-0">COVID</h5>
+                  </div>
+                </div>
+              </div>
+
+              <button type="reset" class="btn btn-d">
+                Reset
+              </button>
+
+              <!-- about us  -->
+              <button type="button" class="btn btn-d">About Us</button>
+
+
+            </div>
             </div>
           </div>
         </form>
