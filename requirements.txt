@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+pickle-mixin
+flask
+os-sys
+opencv-python
+split-folders
+tensorflow
