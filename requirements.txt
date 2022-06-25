@@ -4,5 +4,4 @@ matplotlib
 pickle-mixin
 flask
 opencv-python
-split-folders
 tensorflow
