@@ -33,8 +33,10 @@
         <p class="lead mb-0">COVID - VIRAL - NORMAL</p>
       </header>
 
+
       <div class="row py-4">
         <form
+        id="myform"
           action="{{ url_for('predict')}}"
           method="post"
           enctype="multipart/form-data"
@@ -43,8 +45,7 @@
             <!-- Upload image input-->
             <div class="image-area mt-4">
               <img
-                id="imageResult"
-                src="../upload/upload_chest.png"
+                src="../static/img_icon.png"
                 alt=""
                 height="300px"
                 width="300px"
@@ -80,11 +81,7 @@
             </div>
 
             <!-- Uploaded image area-->
-            <p
-              class=" text-white text-uppercase text-center p-4"
-            >
-              {{ prediction_text }}
-            </p>
+
 
             <div class="d-grid gap-2 md-block mt-4">
 
@@ -98,10 +95,42 @@
               <!-- about us  -->
               <button type="button" class="btn btn-d" data-bs-toggle="modal" data-bs-target="#aboutModal"  >About Us</button>
 
+              <div class="modal " id="predictionModal">
+                <div class="modal-dialog  modal-dialog-centered">
+                  <div class="modal-content">
+              
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title"  style="font-weight: 900;">Prediction</h4>
+                      <button type="button " class="btn-close " data-bs-dismiss="modal"></button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <div class="modal-body">
 
+
+                      
+                      <div class="my-5">
+                        <p
+                        id="predictionResult"
+                          class=" text-white"
+                          style=" font-weight: 800; font-size: 30px;"
+                        >
+                          {{ prediction_text }}
+                        </p>
+
+                      </div>
+
+                    </div>
+              
+                    <!-- Modal footer -->
+              
+                  </div>
+                </div>
+              </div>
 
               <!-- The Modal -->
-<div class="modal" id="aboutModal">
+<div class="modal " id="aboutModal">
   <div class="modal-dialog  modal-dialog-centered">
     <div class="modal-content">
 
@@ -154,6 +183,11 @@
       integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
       crossorigin="anonymous"
     ></script>
-    <script src="../static/js/app.js"></script>
+<script>
+    $(document).ready(function () {
+  $("#predictionModal").modal("show");
+});
+
+</script>
   </body>
 </html>

@@ -41,7 +41,7 @@ def predict():
         prediction = model.predict(arr)
         classes =['COVID', 'Normal', 'Viral Pneumonia']
         res = classes[np.argmax(prediction)]
-        return render_template('index.html', prediction_text=str(res) )
+        return render_template('prediction.html', prediction_text=str(res ) )
 
     if request.method == 'GET':
         return render_template('index.html')
