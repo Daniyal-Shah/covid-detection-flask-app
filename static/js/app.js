@@ -28,3 +28,14 @@ function showFileName(event) {
   var fileName = input.files[0].name;
   infoArea.textContent = "File name: " + fileName;
 }
+
+$(function () {
+  $("#btnReset").on("click", function () {
+    $("#imageResult").attr("src", "../static/img_icon.png");
+
+    $("#predictionResult").text("");
+    let btn = document.getElementById("btnSubmit");
+    btn.classList.add("disabled");
+    infoArea.textContent = "Choose file ";
+  });
+});
