@@ -5,21 +5,21 @@ import pickle
 import os
 import cv2
 
-application = Flask(__name__) #Initialize the flask App
+app = Flask(__name__) #Initialize the flask App
 
 
 UPLOAD_FOLDER = "./upload"
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
-application.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 model = pickle.load(open('xray_model.pkl', 'rb'))
 
-@application.route('/')
+@app.route('/')
 def home():
     return render_template('index.html')
 
-@application.route('/predict',methods=['POST','GET'])
+@app.route('/predict',methods=['POST','GET'])
 def predict():
     if request.method == 'POST':
         # check if the post request has the file part
@@ -32,7 +32,7 @@ def predict():
             return redirect(request.url)
         if file:
             # filename = secure_filename(file.filename)
-            file.save(os.path.join(application.config['UPLOAD_FOLDER'], 'upload_chest.jpg'))
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'upload_chest.jpg'))
 
         image = cv2.imread('./upload/upload_chest.jpg') # read file 
         model.trainable=False
@@ -48,4 +48,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    application.run(debug=True)
+    app.run(debug=True)
