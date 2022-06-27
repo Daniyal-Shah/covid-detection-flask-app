@@ -4,4 +4,4 @@ matplotlib
 pickle-mixin
 flask
 opencv-python
-tensorflow
+tensorflow-cpu
