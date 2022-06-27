@@ -5,3 +5,4 @@ pickle-mixin
 flask
 opencv-python
 tensorflow-cpu
+gunicorn
