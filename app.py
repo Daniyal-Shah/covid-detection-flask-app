@@ -7,12 +7,8 @@ import cv2
 
 app = Flask(__name__) #Initialize the flask App
 
-
 UPLOAD_FOLDER = "./upload"
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 model = pickle.load(open('xray_model.pkl', 'rb'))
 
 @app.route('/')
@@ -22,16 +18,14 @@ def home():
 @app.route('/predict',methods=['POST','GET'])
 def predict():
     if request.method == 'POST':
-        # check if the post request has the file part
+
         if 'file' not in request.files:
             return redirect(request.url)
         file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
+
         if file.filename == '':
             return redirect(request.url)
         if file:
-            # filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'upload_chest.jpg'))
 
         image = cv2.imread('./upload/upload_chest.jpg') # read file 

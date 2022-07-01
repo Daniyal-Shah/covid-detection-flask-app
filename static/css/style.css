@@ -229,7 +229,7 @@ body {
 }
 
 #predictionModal {
-  background: -moz-radial-gradient(
+  /* background: -moz-radial-gradient(
       0% 100%,
       ellipse cover,
       rgba(104, 128, 138, 0.4) 10%,
@@ -282,7 +282,7 @@ body {
       rgba(42, 60, 87, 0.4) 100%
     ),
     linear-gradient(135deg, #670d10 0%, #092756 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 ); */
 }
 
 .modal-body,
